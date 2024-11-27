@@ -4,7 +4,7 @@ import { addEmp, updateEmp } from "../slices/empSlice";
 import { AppDispatch } from "../slices/store";
 
 interface EmployeeFormProps {
-  existingEmployee?: {
+  existingEmp?: {
     id: string;
     name: string;
     age: number;
@@ -44,7 +44,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({ existingEmp }) => {
       <input
         type="number"
         value={age}
-        onChange={(e) => setAge(e.target.value)}
+        onChange={(e) => setAge(Number(e.target.value))}
         placeholder="Age"
         className="border p-2"
       />

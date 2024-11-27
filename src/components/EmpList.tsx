@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchEmps, deleteEmp, updateEmp } from "../slices/empSlice";
 import { RootState, AppDispatch } from "../slices/store";
 import EmpDetailsModal from "./EmpDetailsModal";
+import EmpUpdateModal from "./EmpUpdateModal";
 import { Emp } from "../slices/empSlice";
 
 const EmployeeList: React.FC = () => {
@@ -65,6 +66,11 @@ const EmployeeList: React.FC = () => {
       <EmpDetailsModal
         isOpen={isDetailsModalOpen}
         onClose={() => setIsDetailsModalOpen(false)}
+        employee={selectedEmp}
+      />
+      <EmpUpdateModal
+        isOpen={isUpdateModalOpen}
+        onClose={() => setIsUpdateModalOpen(false)}
         employee={selectedEmp}
       />
     </div>
