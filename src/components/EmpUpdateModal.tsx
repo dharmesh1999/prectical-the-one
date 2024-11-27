@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommonModal from "./CommonModal";
 import { Emp, updateEmp } from "../slices/empSlice";
 import { useDispatch } from "react-redux";
@@ -19,6 +19,14 @@ const EmpUpdateModal: React.FC<UpdateModalProps> = ({
   const [age, setAge] = useState(employee?.age || 0);
   const [position, setPosition] = useState(employee?.position || "");
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (employee) {
+      setName(employee?.name);
+      setAge(employee?.age);
+      setPosition(employee?.position);
+    }
+  }, [employee]);
 
   if (!employee) return <></>;
 

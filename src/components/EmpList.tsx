@@ -5,6 +5,8 @@ import { RootState, AppDispatch } from "../slices/store";
 import EmpDetailsModal from "./EmpDetailsModal";
 import EmpUpdateModal from "./EmpUpdateModal";
 import { Emp } from "../slices/empSlice";
+import EmployeeForm from "./EmpForm";
+import EmpForm from "./EmpForm";
 
 const EmployeeList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -12,6 +14,7 @@ const EmployeeList: React.FC = () => {
 
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedEmp, setSelectedEmp] = useState<Emp | null>(null);
 
   useEffect(() => {
@@ -25,7 +28,17 @@ const EmployeeList: React.FC = () => {
   console.log({ isUpdateModalOpen, isDetailsModalOpen });
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Employee List</h1>
+      <div className="flex justify-between mb-5">
+        <h1 className="text-2xl font-bold mb-4">Employee List</h1>
+        <button
+          onClick={() => {
+            setIsAddModalOpen(true);
+          }}
+          className="bg-blue-500 rounded-md px-2 py-1"
+        >
+          ADD EMPLOYEE
+        </button>
+      </div>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -72,6 +85,10 @@ const EmployeeList: React.FC = () => {
         isOpen={isUpdateModalOpen}
         onClose={() => setIsUpdateModalOpen(false)}
         employee={selectedEmp}
+      />
+      <EmpForm
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
       />
     </div>
   );

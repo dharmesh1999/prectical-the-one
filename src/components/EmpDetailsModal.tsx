@@ -16,15 +16,9 @@ const EmpDetailsModal: React.FC<DetailsModalProps> = ({
   return (
     <CommonModal isOpen={isOpen} onClose={onClose}>
       <h2 className="text-xl font-bold mb-4">Employee Details</h2>
-      <p>
-        <strong>Name:</strong> {employee?.name}
-      </p>
-      <p>
-        <strong>Age:</strong> {employee?.age}
-      </p>
-      <p>
-        <strong>Position:</strong> {employee?.position}
-      </p>
+      <p className="text-center">Name:{employee?.name}</p>
+      <p>Age:{employee?.age}</p>
+      <p>Position:{employee?.position}</p>
       <button
         onClick={onClose}
         className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
